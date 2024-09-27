@@ -93,7 +93,7 @@ public class ProductDaoImpl implements ProductDao {
         map.put("createdDate", now);
         map.put("lastModifiedDate", now);
 
-        KeyHolder keyHolder = new GeneratedKeyHolder(); 
+        KeyHolder keyHolder = new GeneratedKeyHolder();  
 
         namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
 
