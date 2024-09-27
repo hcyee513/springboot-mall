@@ -11,6 +11,7 @@ import com.irenehuang.springboot_mall.dao.OrderDao;
 import com.irenehuang.springboot_mall.dao.ProductDao;
 import com.irenehuang.springboot_mall.dto.BuyItem;
 import com.irenehuang.springboot_mall.dto.CreateOrderRequest;
+import com.irenehuang.springboot_mall.model.Order;
 import com.irenehuang.springboot_mall.model.OrderItem;
 import com.irenehuang.springboot_mall.model.Product;
 import com.irenehuang.springboot_mall.service.OrderService;
@@ -23,6 +24,18 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private ProductDao productDao;
+
+
+    @Override
+    public Order getOrderById(Integer orderId) {
+        Order order = orderDao.getOrderById(orderId);
+
+        List<OrderItem> orderItemList = orderDao.getOrderItemsByOrderId(orderId);
+
+        order.setOrderItemList(orderItemList);
+
+        return order;
+    }
 
     @Transactional // 確保多個table同時新增成功或失敗 (all or never)
     @Override
