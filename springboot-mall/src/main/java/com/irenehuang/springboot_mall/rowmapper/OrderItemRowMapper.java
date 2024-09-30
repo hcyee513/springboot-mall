@@ -7,8 +7,6 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.irenehuang.springboot_mall.model.OrderItem;
 
-import jakarta.validation.OverridesAttribute;
-
 public class OrderItemRowMapper implements RowMapper<OrderItem> {
 
     @Override
